@@ -7,10 +7,13 @@ import { HomeComponent } from './components/home/home/home.component';
 import { LoginAdminComponent } from './components/Authentication/login admin/login-admin/login-admin.component';
 import { LoginCustomerComponent } from './components/Authentication/login customer/login-customer/login-customer.component';
 import { AdminHomeComponent } from './components/home/Admin-home/admin-home/admin-home.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { HeaderComponent } from './components/header/header.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -22,13 +25,17 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     LoginAdminComponent,
     LoginCustomerComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

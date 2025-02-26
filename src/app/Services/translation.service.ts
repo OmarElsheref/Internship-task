@@ -20,7 +20,7 @@ export class TranslationService {
   }
 
   translateText(text: string): string {
-    // تحويل النص للغة المختارة
+    
     const translations: { [key: string]: { [key: string]: string } } = {
       "en": {
         "Add Product": "Add Product",

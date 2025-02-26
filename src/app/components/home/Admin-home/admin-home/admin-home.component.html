@@ -16,7 +16,7 @@
       </button>
     </div>
 
-    <!-- محتوى الصفحة -->
+
     <div class="content">
       <div class="no-products" *ngIf="products.length === 0">
         <h3>{{ translationService.translateText("No Products Available") }}</h3>
@@ -25,7 +25,7 @@
         </button>
       </div>
 
-      <!-- عرض المنتجات -->
+
       <div class="product-list" *ngIf="products.length > 0">
         <div class="product-card" *ngFor="let product of products">
           <img [src]="product.image" alt="Product Image">
@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <!-- Popup لإضافة منتج -->
+
     <div class="popup-overlay" *ngIf="showPopup">
       <div class="popup">
         <h2>{{ translationService.translateText("Add New Product") }}</h2>

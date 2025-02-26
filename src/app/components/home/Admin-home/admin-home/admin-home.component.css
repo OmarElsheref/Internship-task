@@ -52,7 +52,7 @@ body {
 .sidebar-header {
   display: block;
   align-items: center;
-  justify-content: space-between; /* لضبط العنوان والزر بجانب بعض */
+  justify-content: space-between;
   padding: 10px;
   background-color: #343a40;
   color: white;
@@ -108,7 +108,7 @@ body {
   background-color: #0056b3;
 }
 
-/* لجعل المحتوى في منتصف الشاشة */
+
 .content {
   display: flex;
   flex-direction: column;
@@ -147,7 +147,7 @@ body {
   transform: translateY(100px);
 }
 
-/* تصميم كروت المنتجات */
+
 .product-list {
   display: flex;
   flex-wrap: wrap;
@@ -176,7 +176,7 @@ body {
   transform: scale(1.05);
 }
 
-/* Popup */
+
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -187,13 +187,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(5px); /* تأثير ضبابي للخلفية */
+  backdrop-filter: blur(5px);
   z-index: 1000;
 }
 
 .popup {
   background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px); /* تأثير زجاجي */
+  backdrop-filter: blur(10px);
   padding: 25px;
   border-radius: 15px;
   width: 350px;
@@ -213,7 +213,7 @@ body {
   }
 }
 
-/* تحسين المدخلات */
+
 .popup input, .popup textarea {
   width: 100%;
   margin: 10px 0;
@@ -236,7 +236,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-/* تحسين الأزرار */
+
 .confirm-btn {
   background: linear-gradient(45deg, #007bff, #00c6ff);
   color: white;
@@ -274,7 +274,7 @@ body {
   transform: rotate(90deg);
 }
 
-/* تحسين النص */
+
 .popup h2 {
   font-size: 22px;
   font-weight: bold;
@@ -365,10 +365,8 @@ img {
   justify-self: end;
 }
 
-/* /////////////////
-   Layout related
-   no need to touch any of this
-//////////////////*/
+
+
 
 .candidates {
   max-width: 70em;
