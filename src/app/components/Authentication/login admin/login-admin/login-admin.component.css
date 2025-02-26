@@ -1,0 +1,96 @@
+/* استايل الصفحة بالكامل */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1a1a1a;
+}
+
+/* حاوية تسجيل الدخول */
+.login-container {
+  width: 100%;
+  max-width: 500px;
+  height: 500px;
+  background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  color: white;
+}
+
+/* عنوان الصفحة */
+h2 {
+  margin-bottom: 20px;
+}
+
+/* تنسيق المدخلات */
+.input-group {
+  text-align: left;
+  margin-bottom: 15px;
+  width: 450px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.input-group input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* زر تسجيل الدخول */
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #ff6600;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: #e65c00;
+}
+
+/* الروابط */
+.links {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.links a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,431 @@
+:root {
+  --clr-base-400: #5e5e5e;
+  --clr-base-500: #494949;
+
+  --clr-ui-300: #f8e2ff;
+  --clr-ui-400: #580d3a;
+  --clr-ux-300: #e2ffea;
+  --clr-ux-400: #115926;
+  --clr-dev-300: #e2fcff;
+  --clr-dev-400: #024f4f;
+
+  --clr-accent-400: #7e47c5;
+
+  --ff-accent: "Podkova", serif;
+  --ff-base: "Open Sans", sans-serif;
+
+  --fs-300: 0.75rem;
+  --fs-400: 1rem;
+  --fs-500: 2rem;
+
+  --fw-400: 400;
+  --fw-700: 700;
+
+  --shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
+  --border-radius: 0.75rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background-color: #2d2d2d;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+}
+
+.sidebar-header {
+  display: block;
+  align-items: center;
+  justify-content: space-between; /* لضبط العنوان والزر بجانب بعض */
+  padding: 10px;
+  background-color: #343a40;
+  color: white;
+  font-size: 20px;
+}
+
+.sidebar-header h2 {
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.menu-item {
+  padding: 12px 15px;
+  margin: 5px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: #cccccc;
+}
+
+.menu-item:hover {
+  background-color: #404040;
+  color: #ffffff;
+}
+
+.menu-item.active {
+  background-color: #ff6600;
+  color: #ffffff;
+}
+
+.language-toggle {
+  margin-bottom: 10px;
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.language-toggle button {
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.language-toggle button:hover {
+  background-color: #0056b3;
+}
+
+/* لجعل المحتوى في منتصف الشاشة */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.no-products {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-product-btn {
+  background-color: #28a745;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.add-product-sidebar-btn {
+  margin-top: 20px;
+  background-color: #28a745;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.add-product-sidebar-btn.move-down {
+  transform: translateY(100px);
+}
+
+/* تصميم كروت المنتجات */
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.product-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+/* Popup */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px); /* تأثير ضبابي للخلفية */
+  z-index: 1000;
+}
+
+.popup {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px); /* تأثير زجاجي */
+  padding: 25px;
+  border-radius: 15px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* تحسين المدخلات */
+.popup input, .popup textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.4);
+  color: #333;
+  outline: none;
+  transition: 0.3s ease-in-out;
+}
+
+.popup input::placeholder, .popup textarea::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.popup input:focus, .popup textarea:focus {
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* تحسين الأزرار */
+.confirm-btn {
+  background: linear-gradient(45deg, #007bff, #00c6ff);
+  color: white;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.confirm-btn:hover {
+  background: linear-gradient(45deg, #0056b3, #008fb3);
+  transform: scale(1.05);
+}
+
+.close-btn {
+  background: #ff4d4d;
+  color: white;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  background: #cc0000;
+  transform: rotate(90deg);
+}
+
+/* تحسين النص */
+.popup h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: white;
+}
+
+img {
+  display: block;
+}
+
+.ux {
+  --bg: var(--clr-ux-300);
+  --fg: var(--clr-ux-400);
+}
+.ui {
+  --bg: var(--clr-ui-300);
+  --fg: var(--clr-ui-400);
+}
+.dev {
+  --bg: var(--clr-dev-300);
+  --fg: var(--clr-dev-400);
+}
+
+.tag {
+  font-size: var(--fs-300);
+  font-weight: var(--fw-700);
+  display: inline-block;
+  padding: 0.15em 0.75em;
+  border-radius: 100vw;
+  margin-right: 0.5em;
+  background: var(--bg, lightgray);
+  color: var(--fg, #333);
+}
+
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0.5em 3em;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--fg, #fff);
+  background: var(--bg, var(--clr-accent-400));
+  border-radius: var(--border-radius);
+}
+
+.candidate {
+  padding: 1em;
+}
+
+.candidate > img {
+  border-radius: var(--border-radius);
+}
+
+.candidate .name,
+.candidate .roles,
+.candidate .bio {
+  margin: 0;
+}
+
+.candidate .name {
+  font-family: var(--ff-accent);
+  font-size: var(--fs-500);
+  color: var(--clr-base-500);
+  line-height: 1;
+}
+
+.candidate .roles {
+  line-height: 1;
+  font-size: var(--fs-300);
+}
+
+.candidate .social {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.candidate .social a:hover,
+.candidate .social a:focus {
+  opacity: 0.5;
+}
+
+.candidate .btn {
+  align-self: end;
+  justify-self: end;
+}
+
+/* /////////////////
+   Layout related
+   no need to touch any of this
+//////////////////*/
+
+.candidates {
+  max-width: 70em;
+  margin: 0 auto;
+  padding: 2em;
+  display: grid;
+  gap: 2em;
+}
+
+.candidate {
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-areas:
+    "img social"
+    "name name"
+    "role role"
+    "bio bio"
+    "button button";
+  gap: 0.5em;
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius);
+}
+
+@media (min-width: 500px) {
+  .candidate {
+    grid-template-columns: min-content minmax(15rem, 22.5rem);
+    grid-template-rows: min-content min-content 1fr auto;
+    grid-template-areas:
+      "img name"
+      "img role"
+      "img bio"
+      "social button";
+  }
+}
+
+@media (min-width: 960px) {
+  .candidates {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.candidate img {
+  grid-area: img;
+}
+.candidate .name {
+  grid-area: name;
+}
+.candidate .roles {
+  grid-area: role;
+}
+.candidate .bio {
+  grid-area: bio;
+}
+.candidate .social {
+  grid-area: social;
+}
+.candidate .btn {
+  grid-area: button;
+}
