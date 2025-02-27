@@ -1,0 +1,128 @@
+/*
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background-color: #2d2d2d;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+}
+
+.sidebar-header {
+  display: block;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #343a40;
+  color: white;
+  font-size: 20px;
+}
+
+.sidebar-header h2 {
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.menu-item {
+  padding: 12px 15px;
+  margin: 5px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: #cccccc;
+}
+
+.menu-item:hover {
+  background-color: #404040;
+  color: #ffffff;
+}
+
+.menu-item.active {
+  background-color: #ff6600;
+  color: #ffffff;
+}
+
+.language-toggle {
+  margin-bottom: 10px;
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.language-toggle button {
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.language-toggle button:hover {
+  background-color: #0056b3;
+}
+
+
+.no-products {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-product-btn {
+  background-color: #28a745;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.add-product-sidebar-btn {
+  margin-top: 20px;
+  background-color: #28a745;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.add-product-sidebar-btn.move-down {
+  transform: translateY(100px);
+}
+
+
+@keyframes fadeIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+ */

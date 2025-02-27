@@ -1,0 +1,14 @@
+import { Component, EventEmitter, Output } from '@angular/core';
+
+@Component({
+  selector: 'app-input-modal',
+  templateUrl: './input-modal.component.html',
+  styleUrl: './input-modal.component.css'
+})
+export class InputModalComponent {
+  @Output() close = new EventEmitter<void>();
+
+  closeModal() {
+    this.close.emit();
+  }
+}
