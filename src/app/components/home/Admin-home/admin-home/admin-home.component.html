@@ -1,55 +1,6 @@
 <body [dir]="translationService.currentLang === 'ar' ? 'rtl' : 'ltr'">
   <div class="dashboard">
-    <div class="sidebar">
-      <button class="language-toggle" (click)="translationService.toggleLanguage()">
-        {{ translationService.currentLang === 'en' ? '🇬🇧 English' : '🇸🇦 عربي' }}
-      </button>
-      <div class="sidebar-header">
-        <h2>{{ translationService.translateText("Dashboard") }}</h2>
-
-      </div>
-      <div class="menu-item active">{{ translationService.translateText("Products") }}</div>
-      <div class="menu-item">{{ translationService.translateText("Settings") }}</div>
-      <button class="add-product-sidebar-btn" [class.move-down]="products.length > 0"
-        (click)="openPopup()" *ngIf="products.length > 0">
-        {{ translationService.translateText("Add Product") }}
-      </button>
+    <app-dashboard></app-dashboard>
+    <app-admin-content></app-admin-content>
     </div>
-
-
-    <div class="content">
-      <div class="no-products" *ngIf="products.length === 0">
-        <h3>{{ translationService.translateText("No Products Available") }}</h3>
-        <button class="add-product-btn" (click)="openPopup()">
-          {{ translationService.translateText("Add Product") }}
-        </button>
-      </div>
-
-
-      <div class="product-list" *ngIf="products.length > 0">
-        <div class="product-card" *ngFor="let product of products">
-          <img [src]="product.image" alt="Product Image">
-          <h3>{{ product.name }}</h3>
-          <p>{{ product.description }}</p>
-          <span class="price">${{ product.price }}</span>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="popup-overlay" *ngIf="showPopup">
-      <div class="popup">
-        <h2>{{ translationService.translateText("Add New Product") }}</h2>
-        <input type="text" [(ngModel)]="newProduct.name" placeholder="Product Name">
-        <textarea [(ngModel)]="newProduct.description" placeholder="Product Description"></textarea>
-        <input type="number" [(ngModel)]="newProduct.price" placeholder="Price">
-        <input type="text" [(ngModel)]="newProduct.image" placeholder="Image URL">
-        <button class="confirm-btn" (click)="addProduct()">
-          {{ translationService.translateText("Done") }}
-        </button>
-        <button class="close-btn" (click)="closePopup()">X</button>
-      </div>
-    </div>
-
-  </div>
 </body>

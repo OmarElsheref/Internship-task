@@ -1,29 +1,3 @@
-:root {
-  --clr-base-400: #5e5e5e;
-  --clr-base-500: #494949;
-
-  --clr-ui-300: #f8e2ff;
-  --clr-ui-400: #580d3a;
-  --clr-ux-300: #e2ffea;
-  --clr-ux-400: #115926;
-  --clr-dev-300: #e2fcff;
-  --clr-dev-400: #024f4f;
-
-  --clr-accent-400: #7e47c5;
-
-  --ff-accent: "Podkova", serif;
-  --ff-base: "Open Sans", sans-serif;
-
-  --fs-300: 0.75rem;
-  --fs-400: 1rem;
-  --fs-500: 2rem;
-
-  --fw-400: 400;
-  --fw-700: 700;
-
-  --shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
-  --border-radius: 0.75rem;
-}
 
 * {
   margin: 0;

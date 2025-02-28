@@ -1,0 +1,45 @@
+<div class="sm:w-72 shadow-lg bg-[black]  z-20 h-[100%] p-3">
+    <div class="sm:flex text-center justify-between items-center">
+        <a routerLink="/overview" class="sm:block text-[#fff] hidden text-4xl
+         font-extrabold tracking-tight ">
+         {{ translationService.translateText("Ecommerce") }}
+        </a>
+    </div>
+    <button
+  class="px-4 py-2 bg-gray-800 text-dark-clr font-semibold rounded-full flex items-center gap-2
+         hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-all"
+  (click)="translationService.toggleLanguage()">
+
+  <span class="text-lg">
+    {{ translationService.currentLang === 'en' ? '🇬🇧 English' : '🇸🇦 عربي' }}
+  </span>
+
+</button>
+    <div class="mt-10">
+        <div *ngFor="let link of links">
+            <a class="sm:block hidden text-[rgba(255,255,255,0.5)] mt-4 text-xl mb-4 uppercase text-white">
+              {{ translationService.translateText(link.title) }}
+            </a>
+            <ul class="flex gap-1 flex-col border-b border-[rgba(74,34,34,0.2)] py-2">
+                <li *ngFor="let item of link.items" class="p-3 rounded-md hover:bg-[rgba(255,255,255,0.1)]">
+                    <a class="flex gap-3 items-center text-gray-400 hover:text-white" [routerLink]="item.route ? item.route : '/overview'">
+                        <i class="{{item.icon}} text-xl sm:w-5"></i>
+                        <a class="sm:block hidden   text-lg">{{ translationService.translateText(item.name ? item.name : "overview") }}</a>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <button
+
+    class="px-4 py-2 bg-red-600 text-white font-semibold rounded-full flex items-center gap-2
+    hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-all"
+
+    (click)="logout()">
+    <i class="fas fa-sign-out-alt"></i>
+    <span>{{ translationService.translateText("Logout") }}</span>
+</button>
+
+</div>
+

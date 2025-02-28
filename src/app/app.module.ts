@@ -14,6 +14,20 @@ import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-transla
 import { HeaderComponent } from './components/header/header.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+import { ToastrModule } from 'ngx-toastr';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ProductsComponent } from './components/products/products.component';
+import { AdminContentComponent } from './components/home/admin-content/admin-content.component';
+import { InputModalComponent } from './components/shared/input-modal/input-modal.component';
+import { DataStorageService } from './Services/data-storage.service';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { CartService } from './Services/cart.service';
+import { PaymentsComponent } from './components/payments/payments.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -26,7 +40,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginAdminComponent,
     LoginCustomerComponent,
     AdminHomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    DashboardComponent,
+    ProductsComponent,
+    AdminContentComponent,
+    InputModalComponent,
+    ShoppingCartComponent,
+    PaymentsComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +56,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgxSpinnerModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatCardModule,
+    MatFormFieldModule,
+    ToastrModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -44,7 +69,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [TranslateService],
+  providers: [TranslateService, DataStorageService, CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
