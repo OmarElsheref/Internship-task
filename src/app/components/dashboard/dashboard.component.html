@@ -1,24 +1,3 @@
-<!-- <body [dir]="translationService.currentLang === 'ar' ? 'rtl' : 'ltr'">
-  <div class="dashboard">
-    <div class="sidebar">
-      <button class="language-toggle" (click)="translationService.toggleLanguage()">
-        {{ translationService.currentLang === 'en' ? '🇬🇧 English' : '🇸🇦 عربي' }}
-      </button>
-      <div class="sidebar-header">
-        <h2>{{ translationService.translateText("Dashboard") }}</h2>
-
-      </div>
-      <div class="menu-item active">{{ translationService.translateText("Products") }}</div>
-      <div class="menu-item">{{ translationService.translateText("Settings") }}</div>
-      <button class="add-product-sidebar-btn" [class.move-down]="products.length > 0"
-        (click)="openPopup()" *ngIf="products.length > 0">
-        {{ translationService.translateText("Add Product") }}
-      </button>
-    </div>
-
-  </div>
-</body> -->
-
 <div class="sm:w-72 shadow-lg bg-[black]  z-20 h-[100%] p-3">
     <div class="sm:flex text-center justify-between items-center">
         <a routerLink="/overview" class="sm:block text-[#fff] hidden text-4xl
@@ -51,5 +30,16 @@
             </ul>
         </div>
     </div>
+
+    <button
+
+    class="px-4 py-2 bg-red-600 text-white font-semibold rounded-full flex items-center gap-2
+    hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-all"
+
+    (click)="logout()">
+    <i class="fas fa-sign-out-alt"></i>
+    <span>{{ translationService.translateText("Logout") }}</span>
+</button>
+
 </div>
 

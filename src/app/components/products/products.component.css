@@ -1,6 +1,6 @@
 .table-container {
   overflow-x: auto;
-  max-width: 100%; /* Adjust the maximum width as needed */
+  max-width: 100%;
 }
 
 
@@ -12,8 +12,7 @@
 
 .overscroll-x {
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS devices */
-  max-width: 100%; /* Ensure the table doesn't overflow the container */
-  white-space: nowrap; /* Prevent line breaks within table cells */
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  white-space: nowrap; 
 }
-  

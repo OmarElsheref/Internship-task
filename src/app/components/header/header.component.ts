@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../Authentication/auth.service';
+import { ShoppingCartService } from '../../Services/shopping-cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,18 +12,27 @@ import { AuthService } from '../Authentication/auth.service';
 export class HeaderComponent {
   private userSub!: Subscription
   isAuthenticated = false;
+  isLoggedIn = false;
 
-  constructor(private authService: AuthService) { }
+  cartCount = 0;
 
-  ngOnInit(): void {
-    this.userSub = this.authService.user.subscribe(user => {
-      this.isAuthenticated = !user ? false : true;
+  constructor(private authService: AuthService,private shoppingCartService: ShoppingCartService, private router: Router) { }
+
+  ngOnInit() {
+    this.authService.checkLoginStatus();
+    this.authService.isLoggedIn().subscribe(status => {
+      this.isLoggedIn = status;
+    });
+    this.shoppingCartService.cartCount$.subscribe(count => {
+      this.cartCount = count;
     });
   }
 
-  onLogout(){
+  logout() {
     this.authService.logout();
-
+    this.router.navigate([""]).then(() => {
+      window.location.reload();
+    });
   }
 
   onSaveData(){

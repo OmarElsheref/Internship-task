@@ -1,8 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { DataStorageService } from '../../Services/data-storage.service';
+import { CartService } from '../../Services/cart.service';
+import { ShoppingCartService } from '../../Services/shopping-cart.service';
+
+interface Product {
+  name: string;
+  description: string;
+  price: number;
+  imageUrl: string;
+}
 
 @Component({
   selector: 'app-products',
@@ -10,91 +16,55 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrl: './products.component.css'
 })
 export class ProductsComponent implements OnInit{
-  displayedColumns: string[] = [
-    '_id',
-    'image',
-    'name',
-    'quantity',
-    'price',
-    'discount',
-    'category',
-    'tag',
-    'featured',
-    'firstDate',
-    'updateDate',
-  ];
-  products: any[] = [];
+  products: Product[] = [];
+  displayedProducts: Product[] = [];
 
-  currentRoutePath: string = '';
-
-  dataSource = new MatTableDataSource<any>([]);
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-
-  @ViewChild(MatSort) sort!: MatSort;
+  currentPage: number = 1;
+  itemsPerPage: number = 6;
+  totalPages: number = 0;
+  cartCount = 0;
 
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private dataStorageService: DataStorageService, private cartService: CartService, private shoppingCartService: ShoppingCartService) {}
 
- //routing
- navigateToProduct(productId: string) {
-  this.router.navigate(['/products', productId]);
-}
+  ngOnInit() {
+    this.dataStorageService.getProducts().subscribe(products => {
+      this.products = products;
+      this.totalPages = Math.ceil(this.products.length / this.itemsPerPage);
+      this.updateDisplayedProducts();
+    }, error => {
+      console.error("Error fetching products:", error);
+    });
 
-Filterchange(event: Event) {
-
-  const value = (event.target as HTMLInputElement).value;
-  this.dataSource.filter = value.trim().toLowerCase();
-
-}
-
-public  formatReadableDate(dateString:any) {
-
-  const options:any = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-
-  const date = new Date(dateString);
-
-  return date.toLocaleString('en-US', options);
-
-}
-compareDates(updatedDate: Date, firstDate: Date): string {
-
-  return updatedDate === firstDate ? 'text-black' : 'font-medium text-green-600';
-
-}
-
-//price formatteur
-public formatPrice(price:any) {
-  if (typeof price === 'string') {
-
-    if (price.includes('$')) {
-
-      return price.replace('$', '') + '$';
-    } else {
-
-      return price + '$';
-    }
-  } else if (typeof price === 'number') {
-
-    return price.toString() + '$';
-  } else {
-
-    return 'N/A';
+    this.shoppingCartService.cartCount$.subscribe(count => {
+      this.cartCount = count;
+    });
   }
-}
 
+  updateDisplayedProducts() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.displayedProducts = this.products.slice(startIndex, endIndex);
+  }
 
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updateDisplayedProducts();
+    }
+  }
 
-ngOnInit(): void {
-  this.route.url.subscribe((urlSegments) => {
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updateDisplayedProducts();
+    }
+  }
 
-    const path = urlSegments.map((segment) => segment.path).join('/');
-    this.currentRoutePath = path;
-
-  });
-}
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
+    this.shoppingCartService.addToCart(product);
+    alert('product added successfully');
+  }
 
 }

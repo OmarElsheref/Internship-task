@@ -24,6 +24,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductsComponent } from './components/products/products.component';
 import { AdminContentComponent } from './components/home/admin-content/admin-content.component';
 import { InputModalComponent } from './components/shared/input-modal/input-modal.component';
+import { DataStorageService } from './Services/data-storage.service';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { CartService } from './Services/cart.service';
+import { PaymentsComponent } from './components/payments/payments.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -40,7 +44,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     DashboardComponent,
     ProductsComponent,
     AdminContentComponent,
-    InputModalComponent
+    InputModalComponent,
+    ShoppingCartComponent,
+    PaymentsComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +69,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [TranslateService],
+  providers: [TranslateService, DataStorageService, CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

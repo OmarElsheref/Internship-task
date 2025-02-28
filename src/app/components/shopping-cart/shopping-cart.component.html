@@ -1,0 +1,36 @@
+<section class="container mx-auto p-10 md:py-12 px-0 md:p-8 md:px-0">
+  <h1 class="text-3xl font-bold mb-5">Shopping Cart</h1>
+
+  <table class="w-full border-collapse border border-gray-300">
+    <thead>
+      <tr class="bg-gray-200">
+        <th class="border border-gray-300 p-2">Product Name</th>
+        <th class="border border-gray-300 p-2">Description</th>
+        <th class="border border-gray-300 p-2">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of cartItems">
+        <td class="border border-gray-300 p-2">{{ product.name }}</td>
+        <td class="border border-gray-300 p-2">{{ product.description }}</td>
+        <td class="border border-gray-300 p-2">${{ product.price }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="text-xl font-bold mt-5">Total Price: ${{ totalPrice }}</h2>
+
+  <button
+    class="mt-5 px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-all"
+    (click)="openPaymentModal()">
+    Proceed to Payment
+  </button>
+
+  <div class="flex justify-center mt-10">
+    <a routerLink="/customer-home" class="p-2 px-6 bg-green-500 text-white rounded-md hover:bg-green-600">
+      Continue Shopping
+    </a>
+  </div>
+
+</section>
+<app-payments *ngIf="isPaymentModalOpen" (close)="closePaymentModal()"></app-payments>

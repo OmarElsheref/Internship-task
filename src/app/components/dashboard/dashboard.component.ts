@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslationService } from '../../Services/translation.service';
 import { NavigationEnd, Router } from '@angular/router';
+import { AuthService } from '../Authentication/auth.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
+  isLoggedIn = true;
+
     products: any[] = [];
     showPopup: boolean = false;
     newProduct = { name: '', description: '', price: 0, image: '' };
@@ -25,16 +28,12 @@ export class DashboardComponent {
           icon: 'fa-brands fa-bandcamp',
           route: '/settings'
         }
-        // ,{
-        //   name: 'website',
-        //   icon: 'fa-solid fa-eye',
-        // },
       ],
     },
 
   ];
 
-  //date formateur
+
   public formatReadableDate(dateString: any) {
     const options: any = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
 
@@ -44,7 +43,7 @@ export class DashboardComponent {
   }
 
 
-  //price formatteur
+
   public formatPrice(price: any) {
     if (typeof price === 'string') {
 
@@ -65,7 +64,7 @@ export class DashboardComponent {
   }
 
 
-  // [routerLink]="['/', item.name]
+  
   public currentPath: string | undefined;
 
   public navigateTo(item: string) {
@@ -76,6 +75,7 @@ export class DashboardComponent {
 
   constructor(
     private router: Router,
+    private authService: AuthService,
     public translationService: TranslationService
   ) {
     this.router.events.subscribe((event) => {
@@ -85,6 +85,18 @@ export class DashboardComponent {
         this.currentPath = event.url.slice(1);
 
       }
+    });
+  }
+
+  ngOnInit() {
+    this.authService.isLoggedIn().subscribe(status => {
+      this.isLoggedIn = status;
+    });
+  }
+
+  logout() {
+    this.router.navigate([""]).then(() => {
+      window.location.reload();
     });
   }
 
